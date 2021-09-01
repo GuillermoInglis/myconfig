@@ -1,0 +1,6 @@
+[submodule "myvim"]
+	path = myvim
+	url = git@github.com:GuillermoInglis/myvim.git
+[submodule "mytmux"]
+	path = mytmux
+	url = git@github.com:GuillermoInglis/mytmux.git
