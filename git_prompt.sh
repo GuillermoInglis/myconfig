@@ -226,10 +226,10 @@ __posh_git_echo () {
     local BranchBehindAndAheadStatusSymbol=''
     local BranchWarningStatusSymbol=''
     if $EnableStatusSymbol; then
-      BranchIdenticalStatusSymbol=$' \xE2\x89\xA1' # Three horizontal lines
-      BranchAheadStatusSymbol=$' \xE2\x86\x91' # Up Arrow
-      BranchBehindStatusSymbol=$' \xE2\x86\x93' # Down Arrow
-      BranchBehindAndAheadStatusSymbol=$'\xE2\x86\x95' # Up and Down Arrow
+      BranchIdenticalStatusSymbol=$' \uE0A0' # Three horizontal lines
+      BranchAheadStatusSymbol=$' \u2B06' # Up Arrow
+      BranchBehindStatusSymbol=$' \u2B07' # Down Arrow
+      BranchBehindAndAheadStatusSymbol=$' \u2B0D' # Up and Down Arrow
       BranchWarningStatusSymbol=' ?'
     fi
 
@@ -447,7 +447,7 @@ __posh_git_echo () {
 
         local localStatusSymbol=$LocalDefaultStatusSymbol
         local localStatusColor=$DefaultForegroundColor
-       
+
         if (( workingCount != 0 )); then
             localStatusSymbol=$LocalWorkingStatusSymbol
             localStatusColor=$LocalWorkingStatusColor
