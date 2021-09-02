@@ -136,12 +136,12 @@ __posh_git_echo () {
         return;
     fi
 
-    local Red='\033[0;31m'
-    local Green='\033[0;32m'
-    local BrightRed='\033[0;91m'
-    local BrightGreen='\033[0;92m'
-    local BrightYellow='\033[0;93m'
-    local BrightCyan='\033[0;96m'
+    local Red='\033[1;31m'
+    local Green='\033[1;32m'
+    local BrightRed='\033[1;91m'
+    local BrightGreen='\033[1;92m'
+    local BrightYellow='\033[1;93m'
+    local BrightCyan='\033[1;96m'
 
     local DefaultForegroundColor=$(__posh_color '\e[m') # Default no color
     local DefaultBackgroundColor=

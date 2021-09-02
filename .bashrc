@@ -70,7 +70,7 @@ else
 fi
 unset color_prompt force_color_prompt
 
-PROMPT_COMMAND=$PROMPT_COMMAND';__posh_git_ps1 "${debian_chroot:+($debian_chroot)}\[\033[01;34m\]aorus > \[\033[01;32m\]$PS1_PATH" "\[\033[01;33m\] > \[\033[00m\]"'
+PROMPT_COMMAND=$PROMPT_COMMAND';__posh_git_ps1 "${debian_chroot:+($debian_chroot)}\[\033[1;34m\]aorus > \[\033[1;32m\]$PS1_PATH" "\[\033[1;33m\] > \[\033[0m\]"'
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
