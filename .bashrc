@@ -1,3 +1,4 @@
+source ~/Code/myconfig/git_prompt.sh
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -57,15 +58,19 @@ if [ -n "$force_color_prompt" ]; then
 fi
 #PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~";IFS=/; for q in ${p:1}; do printf /${q:0:1}; done; printf "${q:1}")'
 PROMPT_COMMAND='PS1_PATH=$(sed "s:\([^/\.]\)[^/]*/:\1/:g" <<< ${PWD/#$HOME/\~})'
+
 if [ "$color_prompt" = yes ]; then
 	#PS1= '${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]wsl -> \[\033[01;32m\]${PS1_PATH}\[\033[01;33m\]$(__git_ps1) > \[\033[00m\]'
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]aorus > \[\033[01;32m\]$PS1_PATH\[\033[01;33m\] > \[\033[00m\]'
+	#PS1='${debian_chroot:+($debian_chroot)}$(__posh_git_echo)'
 	#'\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \w\[\033[0;32m\] - [$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[0;32m\]]\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\]\[\033[0m\] '
 else
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]wsl -> \[\033[01;32m\]${PS1_PATH}\[\033[01;33m\]$(__git_ps1) > \[\033[00m\]'
-	#PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]wsl -> \[\033[01;32m\]${PS1_PATH}\[\033[01;33m\]$(__git_ps1) > \[\033[00m\]'
+	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
+
+PROMPT_COMMAND=$PROMPT_COMMAND';__posh_git_ps1 "${debian_chroot:+($debian_chroot)}\[\033[01;34m\]aorus > \[\033[01;32m\]$PS1_PATH" "\[\033[01;33m\] > \[\033[00m\]"'
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -124,6 +129,9 @@ export PATH="/opt/cross-pi-gcc/bin:/opt/cross-pi-gcc/libexec/gcc/arm-linux-gnuea
 export PATH="/home/ginglis/.local/bin:$PATH"
 
 # make tab cycle through commands after listing
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+
+set -o vi
 bind '"\t":menu-complete'
 bind "set show-all-if-ambiguous off"
 bind "set completion-ignore-case on"
@@ -131,4 +139,3 @@ bind "set menu-complete-display-prefix off"
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
