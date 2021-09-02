@@ -157,13 +157,13 @@ __posh_git_echo () {
     local AfterForegroundColor=$(__posh_color $BrightYellow) # Yellow
     local AfterBackgroundColor=
 
-    local BranchForegroundColor=$(__posh_color $BrightCyan)  # Cyan
+    local BranchForegroundColor=$(__posh_color $BrightYellow)  # Cyan
     local BranchBackgroundColor=
     local BranchAheadForegroundColor=$(__posh_color $BrightGreen) # Green
     local BranchAheadBackgroundColor=
     local BranchBehindForegroundColor=$(__posh_color $BrightRed) # Red
     local BranchBehindBackgroundColor=
-    local BranchBehindAndAheadForegroundColor=$(__posh_color $BrightYellow) # Yellow
+    local BranchBehindAndAheadForegroundColor=$(__posh_color $BrightCyan) # Yellow
     local BranchBehindAndAheadBackgroundColor=
 
     local BeforeIndexText=''
